@@ -21,6 +21,12 @@ Install a linux virtual machine.
 git clone https://github.com/jmuratov98/OS-Final-Project.git
 ```
 
+# Building the project #
+To compile the program. I have set up a simple Make file
+```bash
+make
+```
+
 # Contributing to the repository #
 Please create your own branch and work on that branch, if for whatever reason you need to merge into master, please create a pull request.
 
