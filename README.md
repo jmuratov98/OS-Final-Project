@@ -1,6 +1,6 @@
 # CSc 332 : Operating Systems Final Project #
 
-This repository is our official repository of Professor Zaid Al-Mashandhi's final project assigned during the Spring 2020 semester. The code in the repository will most likely contain unix only commands so if you are on windows [click here](#windows). If not continue on to Linux/Mac.
+This repository is our official repository of Professor Zaid Al-Mashhadani's final project assigned during the Spring 2020 semester. The code in the repository will most likely contain unix only commands so if you are on windows [click here](#windows). If not continue on to Linux/Mac.
 
 # Setup #
 
@@ -9,7 +9,7 @@ You have two options:
 ### Oprion 1: ###
 1. Open Control Panel -> Programs and Features -> Turn Windows Feature on or off -> Check Windows Subsystem for Linux or using the PowerShell cmdlet mentioned at the begining of this article.
 2. Install a terminal eg. Ubuntu, debian, etc.
-You could read more about it [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10) 
+You could read more about it [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 ### Option 2: ###
 Install a linux virtual machine.
