@@ -4,10 +4,15 @@
 #include <sys/wait.h> 
 
 int main(int argc, char* argv[]){
-
+    int size = 0;
     for(int i=0;i<4;i++){
-        char* argument = argv[i + 1];
-        printf("History Command is %s\n", argument);
+        if(!argv[i])
+            break;
+        size++;
+    }
+
+    for(int i=size;i > 0;i--){
+        printf("History Command is %s\n", argv[i-1]);
     }
 
     pid_t pid;
@@ -21,7 +26,7 @@ int main(int argc, char* argv[]){
     else if (pid == 0) // Child process
     {
         printf("\nPrint current directory\n");
-        execlp("ls", "ls", "-l", NULL);
+       execlp("ls", "ls", "-l", NULL);
     }
     else{
         wait(NULL);
