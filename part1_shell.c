@@ -1,4 +1,3 @@
-// TODO: Include error checks
 
 #include <stdio.h>
 #include <sys/wait.h> // For wait()
@@ -9,6 +8,23 @@
 void shell_loop();
 char* read_line(void);
 int execute(char *arg);
+
+char* command[4];
+char* order_command[4];
+int cursor = -1;
+
+void updateHistory(char* buf){
+    cursor = (cursor + 1)%4; 
+    command[cursor] = buf;    
+}
+
+void orderHistory(){
+    int j = cursor;
+    for(int i = 0;i < 4;i++){
+        order_command[i] = command[j];   
+        j = (j + 3) % 4; 
+    }
+}
 
 int main(int argc, char *argv[]) {
     shell_loop();
@@ -21,9 +37,10 @@ void shell_loop() {
 
     do {
         printf("~ ");
-        arg = read_line();
+        arg = read_line();      
         exit = execute(arg);
-    } while(!exit);
+        updateHistory(arg);
+    } while(exit);
 
     free(arg);
 }
@@ -56,7 +73,8 @@ int execute(char *arg) {
             execl("path*", NULL);
         }
         else if(strncmp(arg, "exit*", 5) == 0) {
-            execl("exit_process", NULL);
+            orderHistory();          
+            execv("./exit", order_command);
         }
     }
 
