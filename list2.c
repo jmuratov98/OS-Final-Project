@@ -9,7 +9,7 @@ int main(int argc, char** argv)
     pid_t pclear_id, pls_id, ptee_id, pmv_id; // create all process id
     int mypipe[2];
     chdir("./Dir0/");
-    pipe(mypipe);
+ 
     printf("child%d\n",1);
     if((pclear_id = fork()) < 0) {
         // error forking child
@@ -28,7 +28,6 @@ int main(int argc, char** argv)
         return 1;
     } else if(pls_id == 0) {
         
-        dup2(mypipe[1], 1);
         execlp("ls", "ls", "-l", NULL); 
     } 
 
