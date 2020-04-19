@@ -49,7 +49,7 @@ int main(int argc, char** argv)
         return 1;
     } else if(pmv_id == 0) {
         printf("child4");
-        execlp("cp", "cp", "t1.txt", "tree.txt", NULL);
+        execlp("mv", "mv", "t1.txt", "tree.txt", NULL);
     }
 
     wait(NULL);         
