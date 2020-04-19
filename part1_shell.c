@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <sys/wait.h> // For wait()
 #include <unistd.h> // For fork() and getpid()
@@ -14,15 +13,15 @@ char* order_command[4];
 int cursor = -1;
 
 void updateHistory(char* buf){
-    cursor = (cursor + 1)%4; 
-    command[cursor] = buf;    
+    cursor = (cursor + 1)%4;
+    command[cursor] = buf;
 }
 
 void orderHistory(){
     int j = cursor;
     for(int i = 0;i < 4;i++){
-        order_command[i] = command[j];   
-        j = (j + 3) % 4; 
+        order_command[i] = command[j];
+        j = (j + 3) % 4;
     }
 }
 
@@ -37,10 +36,10 @@ void shell_loop() {
 
     do {
         printf("~ ");
-        arg = read_line();      
+        arg = read_line();
         exit = execute(arg);
         updateHistory(arg);
-    } while(exit);
+    } while(!exit);
 
     free(arg);
 }
@@ -64,17 +63,17 @@ int execute(char *arg) {
     else if (pid == 0) {
         // Child process
         if(strncmp(arg, "tree*", 5) == 0) {
-            execl("tree*", NULL);
+            execl("tree", NULL);
         }
         else if(strncmp(arg, "list*", 5) == 0) {
-            execl("part3", NULL);
+            execl("list", NULL);
         }
         else if(strncmp(arg, "path*", 5) == 0) {
-            execl("path*", NULL);
+            execl("path", NULL);
         }
         else if(strncmp(arg, "exit*", 5) == 0) {
-            orderHistory();          
-            execv("./exit", order_command);
+            orderHistory();
+            execv("exit", order_command);
         }
     }
 
