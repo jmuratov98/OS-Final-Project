@@ -27,27 +27,29 @@ int main(int argc, char** argv)
             return 1;
         }
 
+        // Executes the clear command
+        dup2(mypipe[1], 1);
+        execlp("clear", "clear", NULL);
+
         if(close(mypipe[1]) == -1) {
             perror("Error closing pipe");
             return 1;
         }
-
-        // Executes the clear command
-        execlp("clear", "clear", NULL);
     } else {
         // Parent process
         if((pls_id = fork()) < 0) { // Error checking
             perror("Error forking child");
             return 1;
         } else if(pls_id == 0) {
-            // No need to read from processes
+
+            dup2(mypipe[0], 0);
+            dup2(mypipe[1], 1);
+            execlp("ls", "ls", "-l", NULL);
+
             if(close(mypipe[0]) == -1) {
                 perror("Error closing pipe");
                 return 1;
             }
-
-            dup2(mypipe[1], 1);
-            execlp("ls", "ls", "-l", NULL);
 
             if(close(mypipe[1]) == -1) {
                 perror("Error closing pipe");
