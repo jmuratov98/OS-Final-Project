@@ -63,13 +63,13 @@ int execute(char *arg) {
     else if (pid == 0) {
         // Child process
         if(strncmp(arg, "tree*", 5) == 0) {
-            execl("tree", NULL);
+            execl("tree", "", NULL);
         }
         else if(strncmp(arg, "list*", 5) == 0) {
-            execl("list", NULL);
+            execl("list", "", NULL);
         }
         else if(strncmp(arg, "path*", 5) == 0) {
-            execl("path", NULL);
+            execl("path", "", NULL);
         }
         else if(strncmp(arg, "exit*", 5) == 0) {
             orderHistory();
