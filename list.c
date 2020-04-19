@@ -12,6 +12,8 @@ int main(int argc, char** argv)
     // Create pipe
     pipe(mypipe);
 
+    chdir("./Dir0/");
+
     if((pclear_id = fork()) < 0) {
         // error forking child
         perror("Error forking child");
@@ -62,7 +64,7 @@ int main(int argc, char** argv)
                 }
 
                 dup2(mypipe[0], 0);
-                execlp("tee", "tee", "Dir0/t1.txt", NULL);
+                execlp("tee", "tee", "t1.txt", NULL);
 
                 if(close(mypipe[0]) == -1) {
                     perror("Error closing pipe");
@@ -77,7 +79,7 @@ int main(int argc, char** argv)
                     close(mypipe[0]);
                     close(mypipe[1]);
 
-                    execlp("mv", "mv", "Dir0/t1.txt", "Dir0/tree.txt", NULL);
+                    execlp("mv", "mv", "t1.txt", "tree.txt", NULL);
 
                 } else {
                     close(mypipe[0]);
