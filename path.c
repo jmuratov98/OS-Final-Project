@@ -5,6 +5,7 @@
 
 int main() 
 {    
+    chdir("./Dir0");
     char s[100];                            // Memory buffer 
     printf("Current Working Directory:\n\t%s\n", getcwd(s, 100));         // This prints the current working directory     
     // So this is essentially how the $ pwd command works in linux ... 
