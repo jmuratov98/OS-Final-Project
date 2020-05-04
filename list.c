@@ -6,7 +6,7 @@
 // GOAL: implement the following command :  clear & ls -l | tee text.txt & mv text.txt test.txt
 int main(int argc, char **argv)
 {
-    pid_t pclear_id, pls_id, ptee_id, pmv_id; // create all process id
+    pid_t pclear_id, pls_id, pmv_id, pcat_id; // create all process id
     int mypipe[2];
 
     int status;
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
             perror("[ERROR] Forking child");
             return 1;
         }
-        else if (ptee_id == 0)
+        else if (pmv_id == 0)
         {
             close(mypipe[0]);
             close(mypipe[1]);
@@ -71,6 +71,25 @@ int main(int argc, char **argv)
         }
         else
             wait(&status);
+    }
+
+    if (WIFEXITED(status))
+    {
+        pcat_id = fork();
+        if (pcat_id < 0)
+        {
+            perror("[ERROR] Forking child");
+            return 1;
+        }
+        else if (pcat_id == 0)
+        {
+            execlp("cat", "cat", "tree.txt", NULL);
+        }
+        else {
+            close(mypipe[0]);
+            close(mypipe[1]);
+            wait(&status);
+        }
     }
 
     return 0;
