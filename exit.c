@@ -4,6 +4,7 @@
 #include <sys/wait.h> 
 
 int main(int argc, char* argv[]){
+    chdir("./Dir0");
     int size = 0;
     for(int i=0;i<4;i++){
         if(!argv[i])
