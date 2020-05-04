@@ -1,3 +1,0 @@
-This is testing for fprintf ... 
-Current Working Directory:
-	/mnt/c/Users/Rehman/Documents/GitHub/OS-Final-Project

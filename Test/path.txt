@@ -1,3 +1,0 @@
-This is the path.txt file this file contains useful information regarding the path and file structures within the Linux Operating System.
-
-path 

@@ -1,8 +1,0 @@
-This file contains relevant information on how to use the tree command to view a file project stucture using the bash terminal in the Linux Operating System.
-
-tree
-
-This is the path.txt file this file contains useful information regarding the path and file structures within the Linux Operating System.
-
-path 
-
