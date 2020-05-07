@@ -41,7 +41,7 @@ after closing the file, rename 't3.txt' into 'log.txt' and then delete the first
     char ch, file1[100], file2[100], file3[200];
 
     fs1 = fopen("tree.txt", "r");     // Open file 1 in read mode 
-    fs2 = fopen("path.txt", "r");     // Open file 2 in read mode 
+    fs2 = fopen("path-info.txt", "r");     // Open file 2 in read mode 
 
     // Standard Exception Handling for tree.txt, and path.txt
     if( fs1 == NULL || fs2 == NULL ) {
@@ -89,8 +89,8 @@ after closing the file, rename 't3.txt' into 'log.txt' and then delete the first
 
     remove("tree.txt");     // delete "tree.txt"
     printf("tree.txt file removed successfully ...\n");
-    remove("path.txt");     // delete "path.txt"
-    printf("path.txt file removed successfully ...\n");
+    remove("path-info.txt");     // delete "path.txt"
+    printf("path-info.txt file removed successfully ...\n");
 
     printf("\nAll tasks done!\n\nProgram Execution Complete!\n");
 
